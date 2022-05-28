@@ -31,7 +31,7 @@
 // as keys. We check to see if the complement for the current element already
 // exists in the hash. If yes, return the indices for both elements.
 
-function two_sum(nums, target) {
+function twoSum(nums, target) {
     let hash = {}
     for(let i = 0; i < nums.length; i++) {
         const complement = target - nums[i];
@@ -46,14 +46,14 @@ function two_sum(nums, target) {
 nums = [2,7,11,15]
 target = 9 
 console.log('Expecting: [0,1]')
-console.log(two_sum(nums, target))
+console.log(twoSum(nums, target))
 
 nums = nums = [3,2,4]
 target = 6
 console.log('Expecting: [1,2]')
-console.log(two_sum(nums, target))
+console.log(twoSum(nums, target))
 
 nums = [3,3]
 target = 6
 console.log('Expecting: [0,1]')
-console.log(two_sum(nums, target))
+console.log(twoSum(nums, target))

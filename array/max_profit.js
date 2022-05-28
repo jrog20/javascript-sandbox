@@ -25,31 +25,31 @@
 // We can iterate over the given array once, keeping track of the largest number following the
 // smallest number. 
 
-// We can initiate two variables, min_price and max_profit, to keep track of the lowest buy price
+// We can initiate two variables, minPrice and maxProfit, to keep track of the lowest buy price
 // and the maximum profit seen so far.
 
 // Time complexity: O(n)
 // Space complexity: O(1)
 // ###############################################################################################
-function max_profit(prices) {
-    let min_price = prices[0];
-    let max_profit = 0;
+function maxProfit(prices) {
+    let minPrice = prices[0];
+    let maxProfit = 0;
     for(i = 0; i < prices.length; i++) {
-        if(prices[i] < min_price) {
-            min_price = prices[i];
+        if(prices[i] < minPrice) {
+            minPrice = prices[i];
         }
-        let current_max_profit = prices[i] - min_price;
-        if(current_max_profit > max_profit) {
-            max_profit = current_max_profit
+        let currentMaxProfit = prices[i] - minPrice;
+        if(currentMaxProfit > maxProfit) {
+            maxProfit = currentMaxProfit
         }
     }
-    return max_profit;
+    return maxProfit;
 }
 // ###############################################################################################
 prices = [7,1,5,3,6,4]
 console.log('Expecting 5')
-console.log(max_profit(prices))
+console.log(maxProfit(prices))
 
 prices = [7,6,4,3,1]
 console.log('Expecting 0')
-console.log(max_profit(prices))
+console.log(maxProfit(prices))

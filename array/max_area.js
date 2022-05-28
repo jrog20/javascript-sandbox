@@ -28,32 +28,32 @@
 // Time complexity: O(n)
 // Space complexity: O(1)
 ///////////////////////////////////////////////////////////////////////////////////////////
-function max_area(height) {
-    let max_water = 0;
+function maxArea(height) {
+    let maxWater = 0;
     let left = 0;
     let right = height.length -1;
     while (right >= left) {
-        let container_length = right - left;
-        let container_height = Math.min(height[right], height[left]);
-        let area = container_length * container_height;
-        max_water = Math.max(area, max_water);
+        let containerLength = right - left;
+        let containerHeight = Math.min(height[right], height[left]);
+        let area = containerLength * containerHeight;
+        maxWater = Math.max(area, maxWater);
         if (height[left] < height[right]) {
             left += 1
         } else {
             right -= 1
         }
     }
-    return max_water
+    return maxWater
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 height = [1,8,6,2,5,4,8,3,7]
 console.log('Expecting: 49')
-console.log(max_area(height))
+console.log(maxArea(height))
 
 height = [1,1]
 console.log('Expecting: 1')
-console.log(max_area(height))
+console.log(maxArea(height))
 
 height = [11,13,15,17]
 console.log('Expecting: 33')
-console.log(max_area(height))
+console.log(maxArea(height))

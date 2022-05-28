@@ -47,7 +47,7 @@
 // Time Complexity: O(log N)
 // Space Complexity: O(1)
 ///////////////////////////////////////////////////////////////////////////////////////////
-function find_min(nums) {
+function findMin(nums) {
     // left and right pointers
     let left = 0, right = nums.length - 1;
     // if the list has only one element, return that element OR
@@ -83,12 +83,12 @@ function find_min(nums) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 nums = [3,4,5,1,2]
 console.log('Expecting: 1')
-console.log(find_min(nums))
+console.log(findMin(nums))
 
 nums = [4,5,6,7,0,1,2]
 console.log('Expecting: 0')
-console.log(find_min(nums))
+console.log(findMin(nums))
 
 nums = [11,13,15,17]
 console.log('Expecting: 11')
-console.log(find_min(nums))
+console.log(findMin(nums))
