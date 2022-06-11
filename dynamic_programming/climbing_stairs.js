@@ -27,18 +27,18 @@
 // So the total number of ways to reach the ith step is to sum the two ways: (i - 1) + (i - 2)
 ///////////////////////////////////////////////////////////////////////////////////////////
 function climbStairs(n) {
-    if(n == 1){return 1}
-    let steps = []
-    steps.push(0)
-    steps.push(1)
-    steps.push(2)
-    let i = 3
+    if(n == 1){return 1};
+    let steps = [];
+    steps.push(0);
+    steps.push(1);
+    steps.push(2);
+    let i = 3;
     while(i <= n) {
-        let next = steps[i - 1] + steps[i - 2]
-        steps.push(next)
-        i += 1
+        let next = steps[i - 1] + steps[i - 2];
+        steps.push(next);
+        i += 1;
     }
-    return steps[n]
+    return steps[n];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 n = 2
