@@ -31,18 +31,55 @@
 
 // Time Complexity: O(n^2)
 // Space Complexity: 0(n)
+
+// function lengthOfLIS(nums) {
+//     let dp = Array(nums.length).fill(1);
+//     for (let i = 1; i < nums.length; i++) {
+//         for (let j = 0; j < i; j++) {
+//             if (nums[i] > nums[j]) {
+//                 dp[i] = Math.max(dp[i], dp[j] + 1);
+//             }
+//         }
+//     }
+//     return Math.max(...dp);
+// }
 ///////////////////////////////////////////////////////////////////////////////////////////
+// Dynamic Programming - Intelligently build the subsequence:
+// 1. Initialize an array sub which contains the first element of nums.
+
+// 2. Iterate through the input, starting from the second element. For each element num:
+//     - If num is greater than any element in sub, then add num to sub.
+//     - Otherwise, iterate through sub and find the first element that is 
+//     greater than or equal to num. Replace that element with num.
+
+// 3. Return the length of sub.
+
+// Note:  this algorithm does not always generate a valid subsequence of the input, but the 
+// length of the subsequence will always equal the length of the longest increasing subsequence. 
+// For example, with the input [3, 4, 5, 1], at the end we will have sub = [1, 4, 5], which isn't 
+// a subsequence, but the length is still correct. The length remains correct because the length 
+// only changes when a new element is larger than any element in the subsequence. In that case, 
+// the element is appended to the subsequence instead of replacing an existing element.
+
+// Time Complexity: O(n^2)
+// Space Complexity: 0(n)
+
 function lengthOfLIS(nums) {
-    let dp = Array(nums.length).fill(1);
+    let sub = [nums[0]];
     for (let i = 1; i < nums.length; i++) {
-        for (let j = 0; j < i; j++) {
-            if (nums[i] > nums[j]) {
-                dp[i] = Math.max(dp[i], dp[j] + 1);
+        if (nums[i] > sub[-1]) {
+            sub.append(nums[i]);
+        } else {
+            let j = 0;
+            while (nums[i] > sub[j]) {
+                j += 1;
             }
+            sub[j] = nums[i];
         }
     }
-    return Math.max(...dp);
+    return sub.length;
 }
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 nums = [10,9,2,5,3,7,101,18]
 console.log('Expecting: 4')
