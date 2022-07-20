@@ -33,7 +33,62 @@
 // 4. If the window is not desirable any more, we continue to repeat step 2.
 ///////////////////////////////////////////////////////////////////////////////////////////
 function minWindow(s, t) {
-    
+    // edge cases
+    if (t == '' || s == '' || t.length > s.length) return "";
+
+    let minWindow = "";
+
+    const frequencyMap = new Map();
+
+    // build frequency map
+    for (let char of t) {
+        if (!frequencyMap.get(char)) frequencyMap.set(char, 0);
+        frequencyMap.set(char, frequencyMap.get(char) + 1);
+    }
+
+    // keep track of chars matched
+    let matched = 0;
+
+    // left pointer
+    let left = 0;
+
+    for (let right = 0; right < s.length; right++) {
+        let char = s[right];
+
+        if (frequencyMap.has(char)) {
+        const newFrequency = frequencyMap.get(char) - 1;
+
+            if (newFrequency === 0) matched++;
+
+            frequencyMap.set(char, newFrequency);
+
+            while (matched === frequencyMap.size) {
+                const currentWindow = s.substring(left, right + 1);
+
+                if (!minWindow) {
+                    // no result set yet, update with current
+                    minWindow = currentWindow;
+                } else {
+                    // update window with the smallest one
+                    minWindow = minWindow.length > currentWindow.length ? currentWindow : minWindow;
+                }
+
+                // shrink window
+                const previous = s[left];
+                left++
+
+                // update frequency map if left char was included
+                if (frequencyMap.has(previous)) {
+                    const freq = frequencyMap.get(previous);
+
+                    if (freq === 0) matched--;
+
+                    frequencyMap.set(previous, freq + 1);
+                }
+            }
+        }
+    }
+    return minWindow;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 s = "ADOBECODEBANC"
