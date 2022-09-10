@@ -31,11 +31,13 @@ function fizzBuzz(n) {
         } else if (i % 3 == 0) {
             result.push('Fizz');
         } else {
-            result.push(i);
+            result.push(i.toString());
         }
     }
     return result;
 }
+///////////////////////////////////////////////////////////////////////////////////////////
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 n = 3
 console.log('Expected Value: ["1","2","Fizz"]')
